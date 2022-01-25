@@ -1,0 +1,58 @@
+<div class="animate__animated animate__backInRight">
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="#">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef>
+        No.
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let i = index"> {{ i+1 }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="marca">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef>
+        Marca
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele"> {{ ele.marca }} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="modelo">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef>
+        Modelo
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele"> {{ele.modelo}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="anio">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef>
+        Año
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele"> {{ele.year}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele">
+        <div class="button-group">
+          <button mat-fab color="primary" (click)="verUser(ele.marca)">
+            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+          </button>
+          <button mat-fab color="warn" (click)="verUser(ele.marca)">
+            <i class="fas fa-trash fa-lg"></i>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

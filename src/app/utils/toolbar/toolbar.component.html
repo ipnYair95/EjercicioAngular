@@ -1,0 +1,85 @@
+<div class="container">
+  <mat-toolbar class="customNav">
+
+    <div fxShow="true" fxHide.gt-sm="true">
+      <a (click)="sidenav.toggle()">
+        <i class="fas fa-bars" style="color: aqua;"></i>
+      </a>
+    </div>
+
+    <a mat-button class="companyName" routerLink="/">
+      <span> {{ title }} </span>
+    </a>
+
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+
+      <button mat-stroked-button [routerLink]="rutas[0].path" routerLinkActive="active" *ngIf="!isLogged()">
+        <i [class]="rutas[0].icon"> </i>
+      </button>
+
+      <ng-container *ngIf="isLogged()">
+
+        <button mat-stroked-button *ngFor="let item of rutas.slice(1)" [routerLink]="item.path"
+          routerLinkActive="active">
+          <i [class]="item.icon"> </i>
+        </button>
+
+
+      </ng-container>
+
+
+      <ng-container *ngIf="isLogged()">
+        <app-avatar> </app-avatar>
+
+        <button mat-stroked-button class="a-column" color="warn" [routerLink]="rutas[0].path" (click)="salir()">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </ng-container>
+
+
+    </div>
+  </mat-toolbar>
+
+
+
+  <mat-sidenav-container>
+    <mat-sidenav class="customNav" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+      <div class="flex-column">
+
+        <div class="a">
+          <button mat-stroked-button [routerLink]="rutas[0].path" routerLinkActive="active" *ngIf="!isLogged()">
+            <i [class]="rutas[0].icon"> </i>
+          </button>
+
+          <ng-container *ngIf="isLogged()">
+
+            <button mat-stroked-button *ngFor="let item of rutas.slice(1)" [routerLink]="item.path"
+              routerLinkActive="active">
+              <i [class]="item.icon"> </i>
+            </button>
+
+          </ng-container>
+        </div>
+
+        <div class="b" *ngIf="isLogged()">
+
+          <app-avatar> </app-avatar>
+
+          <button mat-stroked-button class="a-column" color="warn"[routerLink]="rutas[0].path" (click)="salir()">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+
+        </div>
+
+      </div>
+    </mat-sidenav>
+    <!-- <mat-sidenav-content>
+      <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+      <div class="container-route">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content> -->
+  </mat-sidenav-container>
+
+</div>

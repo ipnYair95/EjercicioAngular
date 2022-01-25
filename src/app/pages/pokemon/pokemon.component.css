@@ -1,0 +1,46 @@
+.animate__animated {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add {
+  width: 14%;
+  margin-left: 80%;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 95%;
+}
+
+.centerContent {
+  padding: 15px 0;
+  text-align: center !important;
+  font-size: large;
+}
+
+.button-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.mat-sort-header-container {
+  justify-content: center !important;
+  align-content: center !important;
+}
+
+img {
+  width: 15%;
+}
+
+
+.alert{
+  text-align: center;
+  background: rgb(226 43 43 / 50%);
+  margin: 0px 30%;
+  padding: 8px;
+  border-radius: 24px;
+}

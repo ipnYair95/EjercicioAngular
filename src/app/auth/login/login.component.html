@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-title>
+
+    <div>
+      <h2>Ingreso</h2>
+    </div>
+
+    <div class="imagen">
+      <img src="assets/logos/axity.png" alt="">
+    </div>
+
+
+  </mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="forma">
+      <mat-form-field>
+        <mat-label> Email: </mat-label>
+        <input matInput type="email" placeholder="Email" formControlName="email" />
+      </mat-form-field>
+
+      <label *ngIf="isValido('email')"> Inválido </label>
+
+      <mat-form-field>
+        <mat-label> Password: </mat-label>
+        <input matInput type="password" placeholder="Email" formControlName="password" />
+      </mat-form-field>
+
+      <label *ngIf="isValido('password')"> Inválido </label>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+
+    <label *ngIf="errorText.length > 0 "> Inválido </label>
+
+    <button mat-raised-button color="primary" (click)="login()" [disabled]="activar()" *ngIf="!showProgress">
+      Ingresar
+    </button>
+
+  </mat-card-actions>
+</mat-card>

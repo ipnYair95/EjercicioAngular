@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.avatar {
+  width: 4rem;
+  border-radius: 50%;
+}
+
+mat-card-content {
+  text-align: justify;
+}
+
+.link-group {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.email {
+  background: rgb(255 55 55 / 50%);
+  padding: 10px 12px;
+  border-radius: 11px;
+}
+
+
+@media (max-width: 830px) {
+  mat-card {
+    width: 70%;
+    display: flex;
+  }
+}

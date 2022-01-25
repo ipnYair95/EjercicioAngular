@@ -1,0 +1,77 @@
+<div class="animate__animated animate__backInRight">
+
+  <button class="add" mat-raised-button color="primary" routerLink="/home/pokemons/detail">
+    <i class="fa fa-plus" aria-hidden="true"> Agregar </i>
+  </button>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" *ngIf="pokemons.length != 0; else noHay">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="#">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef mat-sort-header>
+        No.
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let i = index"> {{ i+1 }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef mat-sort-header>
+        Name
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele"> {{ele.nombre }} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="categoria">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef mat-sort-header>
+        Weight
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele"> {{ele.categoria}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="habilidad">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef mat-sort-header>
+        Weight
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele"> {{ele.habilidad}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="avatar">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef>
+        Avatar
+      </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele">
+        <img [src]="ele.avatar" alt="">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td class="centerContent" mat-cell *matCellDef="let ele">
+        <div class="button-group">
+          <button mat-raised-button color="accent" (click)="pokeDetail(ele._id)">
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+          <button mat-raised-button color="warn" (click)="eliminar(ele._id)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <ng-template #noHay>
+    <h2 class="alert">
+      <i class="fas fa-frown    "> No hay pokemons en la lista </i>
+    </h2>
+  </ng-template>
+
+
+</div>

@@ -1,0 +1,34 @@
+<ng-container *ngIf="user">
+
+  <div class="container animate__animated animate__backInRight">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img class="avatar" mat-card-image [src]="user.avatar">
+        </div>
+        <mat-card-title> {{ user.first_name }} </mat-card-title>
+        <mat-card-subtitle> {{ user.last_name }} </mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="user.avatar">
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. At fugiat rem exercitationem commodi vero fuga
+          dolorum aut nostrum architecto odit, voluptates eveniet obcaecati adipisci iure eius explicabo, quo, incidunt
+          laudantium!
+        </p>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="link-group">
+          <span class="email">
+            <i class="fas fa-inbox"> {{ user.email }} </i>
+          </span>
+          <button mat-button routerLink="/home/users">
+            <i class="fas fa-undo"></i>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</ng-container>
