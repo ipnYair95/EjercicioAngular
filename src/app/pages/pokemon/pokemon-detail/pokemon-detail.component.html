@@ -7,7 +7,7 @@
     <mat-card-content>
 
       <h3> Preview </h3>
-      <img [src]="getImg()" alt="">
+      <img [src]="getImg()"  (error)="default($event)">
 
       <form [formGroup]="forma">
 

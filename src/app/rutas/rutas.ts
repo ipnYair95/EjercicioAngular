@@ -20,13 +20,13 @@ export const RUTAS: Ruta[] = [
     path: '/home/pokemons',
     name: 'CRUD Pokemons',
     icon: 'fas fa-frog',
-    image: 'https://assets.stickpng.com/categories/345.png'
+    image: 'assets/logos/poke.png'
   },
   {
     path: '/home/users',
     name: 'Ver Usuarios',
     icon: 'fas fa-user',
-    image: 'https://miro.medium.com/max/724/0*Zw1ZfCk0svcXVQXg.jpg'
+    image: 'assets/logos/user.jpg'
   }
 ];
 

@@ -48,7 +48,7 @@
         Avatar
       </th>
       <td class="centerContent" mat-cell *matCellDef="let ele">
-        <img [src]="ele.avatar" >
+        <img [src]="ele.avatar" (error)="default($event)"  >
       </td>
     </ng-container>
 

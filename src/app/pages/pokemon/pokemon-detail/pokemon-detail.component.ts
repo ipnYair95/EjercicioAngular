@@ -107,5 +107,9 @@ export class PokemonDetailComponent implements OnInit {
     this.commonService.message.next('Ha ocurrido un error');
   }
 
+  default(event: any) {
+    event.target.src = 'assets/logos/pokeball.png';
+  }
+
 
 }

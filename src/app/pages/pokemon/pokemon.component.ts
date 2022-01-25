@@ -13,8 +13,6 @@ import { CommonService } from '../../services/common.service';
   styleUrls: ['./pokemon.component.css'],
 })
 export class PokemonComponent implements AfterViewInit {
-
-
   displayedColumns: string[] = [
     '#',
     'nombre',
@@ -26,7 +24,11 @@ export class PokemonComponent implements AfterViewInit {
   dataSource!: MatTableDataSource<Pokemon>;
   pokemons: Pokemon[] = [];
 
-  constructor(private pokemonService: PokemonService, private router: Router, private commonService: CommonService) {
+  constructor(
+    private pokemonService: PokemonService,
+    private router: Router,
+    private commonService: CommonService
+  ) {
     this.commonService.loading.next(true);
     this.pokemonService.get().subscribe((resp) => {
       this.pokemons = resp;
@@ -51,19 +53,29 @@ export class PokemonComponent implements AfterViewInit {
       this.pokemonService.delete(id).subscribe(async (resp) => {
         this.pokemons = this.pokemons.filter((ele) => ele._id !== id);
         this.dataSource = new MatTableDataSource([...this.pokemons]);
-        Notificaciones.enviarNotificacion( Opcion.exitoCustom, 'Pokemon eliminado con exito' );
+        Notificaciones.enviarNotificacion(
+          Opcion.exitoCustom,
+          'Pokemon eliminado con exito'
+        );
       });
     }
   }
 
-  orderByCat(){
-    const sort = this.pokemons.sort((a,b) => (a.categoria > b.categoria) ? 1 : ((b.categoria > a.categoria) ? -1 : 0));
-    this.dataSource = new MatTableDataSource( [...sort] );
+  orderByCat() {
+    const sort = this.pokemons.sort((a, b) =>
+      a.categoria > b.categoria ? 1 : b.categoria > a.categoria ? -1 : 0
+    );
+    this.dataSource = new MatTableDataSource([...sort]);
   }
 
-  orderByName(){
-    const sort = this.pokemons.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));
-    this.dataSource = new MatTableDataSource( [...sort] );
+  orderByName() {
+    const sort = this.pokemons.sort((a, b) =>
+      a.nombre > b.nombre ? 1 : b.nombre > a.nombre ? -1 : 0
+    );
+    this.dataSource = new MatTableDataSource([...sort]);
   }
 
+  default(event: any) {
+    event.target.src = 'assets/logos/pokeball.png';
+  }
 }
