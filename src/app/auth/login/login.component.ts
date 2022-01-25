@@ -27,13 +27,13 @@ export class LoginComponent implements OnInit {
   ) {
     this.forma = this.fb.group({
       email: [
-        'eve.holt@reqres.in',
+        '',
         [
           Validators.required,
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
         ],
       ],
-      password: ['cityslicka', [Validators.required]],
+      password: ['', [Validators.required]],
     });
 
     this.commonService.loading.next(false);
@@ -54,18 +54,6 @@ export class LoginComponent implements OnInit {
     }
     return false;
   }
-
-  /* login() {
-    this.showProgress = true;
-    this.commonService.loading.next(true);
-
-    //TODO: validacion contra backend de credenciales y retornara un jwt
-
-    setTimeout(() => {
-      localStorage.setItem('jwt','user')
-      this.router.navigateByUrl( RUTAS[1].path );
-    }, 2000);
-  } */
 
   login() {
     this.errorText = '';
