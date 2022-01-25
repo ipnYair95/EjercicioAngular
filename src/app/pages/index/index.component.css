@@ -1,7 +1,21 @@
 div{
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  align-content: space-between;
+}
+
+
+mat-card{
+  margin: 0px 1rem;
+  width: 25%;
+}
+
+mat-card-actions{
+  text-align: center;
+}
+
+mat-card-content img{
+  width: 100%;
 }

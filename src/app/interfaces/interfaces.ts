@@ -1,10 +1,3 @@
-export interface User{
-  id: number;
-  nombre: string;
-  apellido: string;
-  correo: string;
-}
-
 /* export const sortByName = ( data: Data[] ) => {
   console.log(data);
   const sort = data.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));

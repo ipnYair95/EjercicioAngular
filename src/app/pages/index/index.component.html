@@ -1,16 +1,21 @@
 <div class="animate__animated animate__backInRight" >
 
-  <a mat-raised-button color="accent" routerLink="../pokemons">
-    Pokemons
-  </a>
+ <mat-card *ngFor="let ruta of rutas" >
 
-  <a mat-raised-button color="primary"  routerLink="../users" >
-    Usuarios
-  </a>
+  <mat-card-title>
+    <h2> {{ ruta.name }} </h2>
+  </mat-card-title>
+  <mat-card-content>
+    <img [src]="ruta.image" alt="">
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button  color="primary"  [routerLink]="ruta.path">
+      <i class="fas fa-paper-plane "></i>
+    </button>
+  </mat-card-actions>
+
+ </mat-card>
 
 
-  <a mat-raised-button color="primary"  routerLink="../cars" >
-    Autos
-  </a>
 
 </div>

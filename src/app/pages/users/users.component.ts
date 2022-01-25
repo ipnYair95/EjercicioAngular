@@ -4,7 +4,6 @@ import { User } from '../../interfaces/interfaces';
 import { CommonService } from '../../services/common.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { filter } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+
+  dataSource!: MatTableDataSource<User>;
+
   displayedColumns = [
     '#',
     'email',
@@ -24,7 +26,6 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
 
-  dataSource!: MatTableDataSource<User>;
 
   sort!: MatSort;
 

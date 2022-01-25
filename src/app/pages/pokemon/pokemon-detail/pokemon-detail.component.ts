@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pokemon } from '../../../interfaces/customInterface';
 import { PokemonService } from '../../../services/pokemon.service';
 import { CommonService } from '../../../services/common.service';
+import { Notificaciones, Opcion } from '../../../interfaces/notificaciones';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -37,11 +38,17 @@ export class PokemonDetailComponent implements OnInit {
   ) {
     this.route.params.subscribe((resp) => {
       if (resp['id']) {
-        this.pokemonService.getById(resp['id']).subscribe((resp) => {
-          this.id = resp['_id'];
-          this.pokemon = resp;
-          this.initForm();
-        });
+        this.pokemonService.getById(resp['id']).subscribe(
+          (resp) => {
+            this.id = resp['_id'];
+            this.pokemon = resp;
+            this.initForm();
+          },
+          () => {
+            this.commonService.message.next('Pokemon no encontrado');
+            this.router.navigateByUrl('/home/pokemons');
+          }
+        );
       } else {
         this.initForm();
       }
@@ -65,15 +72,40 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemon = { ...this.forma.value };
 
     if (this.id != '') {
-      this.pokemonService.editar(this.id, this.pokemon).subscribe((resp) => {
-        this.router.navigateByUrl('/home/pokemons');
-        return;
-      });
-    } else {
-      this.pokemonService.crear(this.pokemon).subscribe((resp) => {
-        this.router.navigateByUrl('/home/pokemons');
-        return;
-      });
+      this.pokemonService.editar(this.id, this.pokemon).subscribe(
+        (resp) => {
+          this.redirectSuccess();
+        },
+        () => {
+          this.errorCustom();
+        }
+      );
+      return;
     }
+
+    this.pokemonService.crear(this.pokemon).subscribe(
+      (resp) => {
+        this.redirectSuccess();
+      },
+      () => {
+        this.errorCustom();
+      }
+    );
+
   }
+
+  getImg(){
+    return this.forma.get('avatar')?.value;
+  }
+
+  redirectSuccess() {
+    this.router.navigateByUrl('/home/pokemons');
+    Notificaciones.enviarNotificacion(Opcion.exitoCustom);
+  }
+
+  errorCustom() {
+    this.commonService.message.next('Ha ocurrido un error');
+  }
+
+
 }

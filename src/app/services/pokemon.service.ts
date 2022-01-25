@@ -19,12 +19,10 @@ export class PokemonService {
   }
 
   editar(id: string, pokemon: Pokemon): Observable<Pokemon> {
-    console.log(pokemon);
     return this.http.put<Pokemon>(`${environment.POKE_API}/${id}`, pokemon);
   }
 
   crear(pokemon: Pokemon): Observable<Pokemon> {
-    console.log(pokemon);
     return this.http.post<Pokemon>(`${environment.POKE_API}`, pokemon);
   }
 

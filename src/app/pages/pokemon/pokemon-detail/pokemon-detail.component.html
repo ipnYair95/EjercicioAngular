@@ -5,6 +5,10 @@
       <h2>Pokemon</h2>
     </mat-card-title>
     <mat-card-content>
+
+      <h3> Preview </h3>
+      <img [src]="getImg()" alt="">
+
       <form [formGroup]="forma">
 
         <mat-form-field>
@@ -20,7 +24,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Avatar" formControlName="avatar">
+          <input matInput placeholder="Place URL image" formControlName="avatar">
         </mat-form-field>
 
       </form>

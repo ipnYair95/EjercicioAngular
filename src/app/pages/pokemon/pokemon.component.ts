@@ -13,8 +13,7 @@ import { CommonService } from '../../services/common.service';
   styleUrls: ['./pokemon.component.css'],
 })
 export class PokemonComponent implements AfterViewInit {
-  @ViewChild(MatSort)
-  sort!: MatSort;
+
 
   displayedColumns: string[] = [
     '#',
@@ -32,7 +31,6 @@ export class PokemonComponent implements AfterViewInit {
     this.pokemonService.get().subscribe((resp) => {
       this.pokemons = resp;
       this.dataSource = new MatTableDataSource([...this.pokemons]);
-      this.dataSource.sort = this.sort;
       this.commonService.loading.next(false);
     });
   }
@@ -40,7 +38,6 @@ export class PokemonComponent implements AfterViewInit {
   ngAfterViewInit() {}
 
   pokeDetail(id: string) {
-    console.log(id);
     this.router.navigate(['/home/pokemons/detail', id]);
   }
 
@@ -58,4 +55,15 @@ export class PokemonComponent implements AfterViewInit {
       });
     }
   }
+
+  orderByCat(){
+    const sort = this.pokemons.sort((a,b) => (a.categoria > b.categoria) ? 1 : ((b.categoria > a.categoria) ? -1 : 0));
+    this.dataSource = new MatTableDataSource( [...sort] );
+  }
+
+  orderByName(){
+    const sort = this.pokemons.sort((a,b) => (a.nombre > b.nombre) ? 1 : ((b.nombre > a.nombre) ? -1 : 0));
+    this.dataSource = new MatTableDataSource( [...sort] );
+  }
+
 }

@@ -2,6 +2,7 @@ export interface Ruta {
   path: string;
   name: string;
   icon: string;
+  image?: string;
 }
 
 export const RUTAS: Ruta[] = [
@@ -17,18 +18,15 @@ export const RUTAS: Ruta[] = [
   },
   {
     path: '/home/pokemons',
-    name: 'Pokemons',
-    icon: 'fas fa-frog'
+    name: 'CRUD Pokemons',
+    icon: 'fas fa-frog',
+    image: 'https://assets.stickpng.com/categories/345.png'
   },
   {
     path: '/home/users',
-    name: 'User',
-    icon: 'fas fa-user'
-  },
-  {
-    path: '/home/cars',
-    name: 'Car',
-    icon: 'fas fa-car'
-  },
+    name: 'Ver Usuarios',
+    icon: 'fas fa-user',
+    image: 'https://miro.medium.com/max/724/0*Zw1ZfCk0svcXVQXg.jpg'
+  }
 ];
 
