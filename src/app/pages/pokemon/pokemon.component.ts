@@ -13,6 +13,9 @@ import { CommonService } from '../../services/common.service';
   styleUrls: ['./pokemon.component.css'],
 })
 export class PokemonComponent implements AfterViewInit {
+
+  loading = false;
+
   displayedColumns: string[] = [
     '#',
     'nombre',
@@ -29,11 +32,13 @@ export class PokemonComponent implements AfterViewInit {
     private router: Router,
     private commonService: CommonService
   ) {
+    this.loading = false;
     this.commonService.loading.next(true);
     this.pokemonService.get().subscribe((resp) => {
       this.pokemons = resp;
       this.dataSource = new MatTableDataSource([...this.pokemons]);
       this.commonService.loading.next(false);
+      this.loading = true;
     });
   }
 
